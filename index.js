@@ -11,7 +11,7 @@ function indexing() {
   for (var i = 0; i < allEvents; i++) {
     var oneEvent = eventsList[i];
     var nameEvent = oneEvent.querySelector('[data-role="event-title"]')
-    .innerHTML;
+      .innerHTML;
     console.log(nameEvent);
     eventsMap[nameEvent] = oneEvent;
   }
@@ -32,7 +32,7 @@ function descending() {
   for (var i = 0; i < allEvents; i++) {
     var oneEvent = eventsList[i];
     var nameEvent = oneEvent.querySelector('[data-role="event-title"]')
-    .innerHTML;
+      .innerHTML;
     console.log(nameEvent);
     eventsMap[nameEvent] = oneEvent;
   }
@@ -45,5 +45,52 @@ function descending() {
     var actualKey = mapKeys[i];
     var oneEvent = eventsMap[actualKey];
     container.appendChild(oneEvent);
+  }
 }
+function upcoming() {
+  var eventsList = document.querySelectorAll('[data-role="event"]');
+  var allEvents = eventsList.length;
+  var eventsMap = {};
+  for (var i = 0; i < allEvents; i++) {
+    var oneEvent = eventsList[i];
+    var dateEvent = oneEvent
+      .querySelector("[data-date]")
+      .getAttribute("data-date");
+    console.log(dateEvent);
+    console.log(oneEvent);
+    eventsMap[dateEvent] = oneEvent;
+  }
+  var mapKeys = Object.keys(eventsMap);
+  console.log(mapKeys);
+  mapKeys.sort();
+  mapKeys.reverse();
+  var container = document.querySelector('[data-role="event-container"]');
+  for (var i = 0; i < allEvents; i++) {
+    var actualKey = mapKeys[i];
+    var oneEvent = eventsMap[actualKey];
+    container.appendChild(oneEvent);
+  }
+}
+function latest() {
+  var eventsList = document.querySelectorAll('[data-role="event"]');
+  var allEvents = eventsList.length;
+  var eventsMap = {};
+  for (var i = 0; i < allEvents; i++) {
+    var oneEvent = eventsList[i];
+    var dateEvent = oneEvent
+      .querySelector("[data-date]")
+      .getAttribute("data-date");
+    console.log(dateEvent);
+    console.log(oneEvent);
+    eventsMap[dateEvent] = oneEvent;
+  }
+  var mapKeys = Object.keys(eventsMap);
+  console.log(mapKeys);
+  mapKeys.sort();
+  var container = document.querySelector('[data-role="event-container"]');
+  for (var i = 0; i < allEvents; i++) {
+    var actualKey = mapKeys[i];
+    var oneEvent = eventsMap[actualKey];
+    container.appendChild(oneEvent);
+  }
 }
